@@ -7,7 +7,7 @@ import 'amfe-flexible'
 
 // 引入vant
 import Vant from 'vant'
-import 'vant/lib/index.css'
+import 'vant/lib/index.less'
 import '@/styles/index.css'
 Vue.use(Vant)
 

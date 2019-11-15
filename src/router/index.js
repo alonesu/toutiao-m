@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 
 const Home = () => import('@/views/home/Index')
 const Question = () => import('@/views/question/Index')
@@ -67,6 +68,13 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+router.beforeEach((to, from, next) => {
+  const user = store.state.user
+  if (!user.token && to.path.startsWith('/user')) {
+    return next({ path: '/login', query: { redirectUrl: to.path } })
+  }
+  next()
 })
 
 export default router
